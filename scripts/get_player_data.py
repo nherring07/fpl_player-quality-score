@@ -2,10 +2,11 @@ import pandas as pd
 import requests
 
 def get_player_data(timeframe):
+    print('Extracting player data...')
+    
     #import data from FPL API endpoint
     data = requests.get('https://fantasy.premierleague.com/api/bootstrap-static/').json()
 
-    
     #extract relevant columns and player IDs
     players_df = pd.DataFrame(data['elements']).dropna(axis=1)
     players_df = players_df[players_df.minutes > 0]
