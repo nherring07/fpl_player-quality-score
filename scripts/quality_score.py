@@ -15,13 +15,19 @@ totals_df = season_df
 totals_cols = ['id','web_name','element_type' ,'total_points','minutes','influence', 'creativity','threat','expected_goals','expected_assists','expected_goal_involvements', 'expected_goals_conceded', 'value_form']
 totals_df = totals_df[totals_cols].rename(columns={'value_form':'value'})
 
+#create empty array to store player quality score objects
 quality_scores = []
 
+#loop through all players
 for i in totals_df.index:
+    #empty array to store calclualted weighted metrics
     weighted_values = []
     element_type = totals_df.loc[i]['element_type']
+    #loop through the list of features used for coefficients
     for c in feat_cols:
-        coef = (all_coefs[(all_coefs['feature'] == 'minutes') & (all_coefs['element_type'] == 1)]['lasso_coef'].values).item()
+        # retrive the relevant coefficient based on feature name and element type
+        coef = (all_coefs[(all_coefs['feature'] == c) & (all_coefs['element_type'] == element_type)]['lasso_coef'].values).item()
+        # retreive the feature value in the totals dataframe and calculate the weighted value
         value = float(totals_df.loc[i][c])
         weighted_value = coef * value
         weighted_values.append(weighted_value)
