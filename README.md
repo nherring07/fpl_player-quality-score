@@ -9,3 +9,6 @@ The purpose of this program is to produce a quality score for Fantasy Premier Le
 4. Calculated the quality score using the feature coefs for each player per position.
 5. Export player quality scores for most recent week and store in /data
  
+## How to use this tool
+-> Run quality_score.py
+-> Use csv file generated in '/data' directory
