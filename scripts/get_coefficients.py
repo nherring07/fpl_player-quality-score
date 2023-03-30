@@ -2,7 +2,9 @@ import pandas as pd
 from sklearn.linear_model import Lasso
 from get_player_data import weekly_df
 
-def get_coefs(element_type):
+def get_coefs():
+
+    print('Calculating coefficients...')
     #create weekly dataframes for each position type
     gkp_df = weekly_df[weekly_df.element_type == 1] 
     def_df = weekly_df[weekly_df.element_type == 2] 
@@ -26,13 +28,4 @@ def get_coefs(element_type):
         this_df = pd.DataFrame({'feature':feat_cols,'lasso_coef': lasso_coef,'element_type': element_type, 'position':position})
         all_coefs = pd.concat([all_coefs,this_df], ignore_index=True).sort_values(by='element_type')
 
-    if element_type not in [1,2,3,4]:
-        return all_coefs
-    else:
-        return all_coefs[all_coefs.element_type == element_type]
-    
-all_coefs = get_coefs(0)
-goalkeeper_coefs = get_coefs(1)
-defender_coefs = get_coefs(2)
-midfielder_coefs = get_coefs(3)
-forward_coefs = get_coefs(4)
+    return all_coefs

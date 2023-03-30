@@ -2,8 +2,7 @@ import pandas as pd
 import requests
 
 def get_player_data(timeframe):
-    print('Extracting player data...')
-    
+
     #import data from FPL API endpoint
     data = requests.get('https://fantasy.premierleague.com/api/bootstrap-static/').json()
 
@@ -37,5 +36,8 @@ def get_player_data(timeframe):
         return weekly_df
 
     
+print('Extracting weekly data...')
 weekly_df = get_player_data('weekly')
+
+print('Extracting season data...')
 season_df = get_player_data('season')
