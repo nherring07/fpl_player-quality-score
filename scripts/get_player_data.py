@@ -25,7 +25,7 @@ def get_player_data(timeframe):
 
         #add player details from players_df and reorganize columns
         weekly_df = weekly_df.merge(players_attr_df, how='left', left_on='element',right_on='id')
-        weekly_df = weekly_df.reindex(columns=['element', 'web_name', 'element_type', 'team','fixture', 'opponent_team', 'total_points', 'was_home',
+        weekly_df = weekly_df.reindex(columns=['element', 'id','web_name', 'element_type', 'team','fixture', 'opponent_team', 'total_points', 'was_home',
             'kickoff_time', 'team_h_score', 'team_a_score', 'round', 'minutes',
             'goals_scored', 'assists', 'clean_sheets', 'goals_conceded',
             'own_goals', 'penalties_saved', 'penalties_missed', 'yellow_cards',

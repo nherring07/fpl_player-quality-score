@@ -35,3 +35,4 @@ for i in totals_df.index:
     quality_scores.append({'id': totals_df.loc[i]['id'], 'name': totals_df.loc[i]['web_name'], 'element_type':element_type, 'total_points': totals_df.loc[i]['total_points'], 'quality_score' : qs})
 
 pd.DataFrame(quality_scores).to_csv(f'/Users/herrn/Documents/GitHub/fpl_player-quality-score/data/player_quality_scores_{last_gameweek}.csv')
+weekly_df.to_csv(f'/Users/herrn/Documents/GitHub/fpl_player-quality-score/data/weekly_player_data_{last_gameweek}.csv')
